@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Bhandar{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <style>
+     body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #5c4332;
+    background: linear-gradient(135deg, #fdf8f2 0%, #f8ecd8 45%, #f3dfc2 100%);
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(222, 184, 135, 0.25), transparent 30%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.page-shell {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    padding: 24px 18px;
+    background: rgba(255, 250, 243, 0.88);
+    backdrop-filter: blur(18px);
+    border-right: 1px solid rgba(181, 148, 105, 0.18);
+    box-shadow: 0 12px 40px rgba(133, 94, 66, 0.12);
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #5c4332;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.sidebar-brand i {
+    font-size: 1.2rem;
+    color: #c28a4d;
+}
+
+.nav-section {
+    margin-top: 12px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    color: #6d5846;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    margin-bottom: 8px;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+    color: #5c4332;
+    background: linear-gradient(90deg,
+        rgba(239, 222, 196, 0.8),
+        rgba(245, 234, 214, 0.9));
+    transform: translateX(4px);
+    box-shadow: 0 8px 20px rgba(194, 138, 77, 0.18);
+}
+
+.main-content {
+    flex: 1;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.topbar {
+    padding: 16px 20px;
+    background: rgba(255, 250, 243, 0.88);
+    border: 1px solid rgba(181, 148, 105, 0.18);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(133, 94, 66, 0.10);
+    backdrop-filter: blur(14px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    color: #5c4332;
+    text-decoration: none;
+}
+
+.topbar-brand i {
+    font-size: 1.1rem;
+    color: #c28a4d;
+}
+
+.content-panel {
+    padding: 24px;
+    background: rgba(255, 250, 243, 0.88);
+    border: 1px solid rgba(181, 148, 105, 0.18);
+    border-radius: 24px;
+    box-shadow: 0 16px 40px rgba(133, 94, 66, 0.10);
+    backdrop-filter: blur(16px);
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    color: #5c4332;
+    border: 1px solid rgba(181, 148, 105, 0.15);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(133, 94, 66, 0.10);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(194, 138, 77, 0.18);
+}
+
+.btn-nav {
+    background: rgba(255, 248, 236, 0.9);
+    color: #5c4332;
+    border: 1px solid rgba(181, 148, 105, 0.18);
+    border-radius: 16px;
+    padding: 12px 14px;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-nav:hover {
+    background: linear-gradient(
+        90deg,
+        rgba(221, 184, 136, 0.8),
+        rgba(232, 202, 160, 0.8)
+    );
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(194, 138, 77, 0.20);
+}
+
+.badge {
+    background: #d4a373;
+    color: white;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15);
+}
+
+.alert {
+    border-radius: 14px;
+    border: 1px solid rgba(181, 148, 105, 0.18);
+    background: rgba(255, 248, 236, 0.95);
+    color: #5c4332;
+}
+.logout-btn,
+.login-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: #c28a4d;
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.logout-btn:hover,
+.login-btn:hover {
+    background: #a86f37;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(194, 138, 77, 0.25);
+}
+
+@media (max-width: 992px) {
+    .page-shell {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: 0;
+        border-bottom: 1px solid rgba(181, 148, 105, 0.18);
+    }
+
+    .main-content {
+        padding: 16px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="page-shell">
+        <aside class="sidebar">
+            <a class="sidebar-brand" href="{% url 'dashboard:home' %}">
+                
+    <i class="bi bi-shop-window"></i>
+                
+                <span>Bhandar</span>
+            </a>
+            <div class="nav-section">
+                <a class="sidebar-link{% if request.resolver_match.namespace == 'dashboard' %} active{% endif %}" href="{% url 'dashboard:home' %}"><i class="bi bi-speedometer2"></i><span>Dashboard</span></a>
+                <a class="sidebar-link" href="{% url 'products:product_list' %}"><i class="bi bi-box-seam"></i><span>Products</span></a>
+                <a class="sidebar-link" href="{% url 'categories:category_list' %}"><i class="bi bi-tags"></i><span>Categories</span></a>
+                <a class="sidebar-link" href="{% url 'brands:brand_list' %}"><i class="bi bi-award"></i><span>Brands</span></a>
+                <a class="sidebar-link" href="{% url 'suppliers:supplier_list' %}"><i class="bi bi-truck"></i><span>Suppliers</span></a>
+            </div>
+           <div class="mt-4">
+    {% if user.is_authenticated %}
+        <form method="post" action="{% url 'accounts:logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="logout-btn">
+                <i class="bi bi-box-arrow-right"></i> Logout
+            </button>
+        </form>
+    {% else %}
+        <a href="{% url 'accounts:login' %}" class="login-btn">
+            <i class="bi bi-box-arrow-in-right"></i> Login
+        </a>
+    {% endif %}
+</div>
+        </aside>
+
+        <main class="main-content">
+            <div class="topbar">
+                <div>
+                    <h4 class="mb-0">Welcome back</h4>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+    <span>Hello, {{ user.username }}</span>
+
+    <img src="https://ui-avatars.com/api/?name={{ user.username }}&background=2563eb&color=fff"
+         class="rounded-circle"
+         width="40"
+         height="40">
+
+    
+</div>
+            </div>
+        
+
+
+
+            <div class="content-panel">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags|default:'info' }} mb-3">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

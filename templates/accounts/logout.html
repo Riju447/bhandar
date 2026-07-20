@@ -1,0 +1,53 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Logged Out{% endblock %}
+
+{% block content %}
+<style>
+.logout-card{
+    max-width:500px;
+    margin:60px auto;
+    background:rgba(255,255,255,.95);
+    border-radius:20px;
+    padding:40px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(146,111,74,.15);
+}
+
+.logout-card h3{
+    color:#5a3d2b;
+    margin-bottom:15px;
+}
+
+.logout-card p{
+    color:#6f5645;
+    margin-bottom:25px;
+}
+
+.logout-btn{
+    display:inline-block;
+    padding:12px 25px;
+    background:linear-gradient(135deg,#deb887,#d4a373);
+    color:#fff;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.logout-btn:hover{
+    background:linear-gradient(135deg,#c7904d,#b7791f);
+    color:#fff;
+}
+</style>
+
+<div class="logout-card">
+    <h3>You have been logged out</h3>
+    <p>Thank you for using Bhandar Inventory Management System.</p>
+
+    <a href="{% url 'accounts:login' %}" class="logout-btn">
+        Login Again
+    </a>
+</div>
+{% endblock %}

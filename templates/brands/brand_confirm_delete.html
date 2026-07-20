@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}Delete Brand{% endblock %}
+{% block content %}
+<div class="card shadow-sm"><div class="card-body"><h3>Delete Brand</h3><p>Are you sure you want to delete {{ object.name }}?</p><form method="post">{% csrf_token %}<button class="btn btn-danger" type="submit">Confirm Delete</button><a class="btn btn-secondary" href="{% url 'brands:brand_list' %}">Cancel</a></form></div></div>
+{% endblock %}

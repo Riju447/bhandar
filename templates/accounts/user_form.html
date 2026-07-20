@@ -1,0 +1,139 @@
+
+
+
+{% block content %}
+<style>
+.user-form-card{
+    max-width:600px;
+    margin:40px auto;
+    background:rgba(255,255,255,.95);
+    border:none;
+    border-radius:24px;
+    box-shadow:0 20px 40px rgba(146,111,74,.15);
+}
+
+.user-form-card .card-body{
+    padding:40px;
+}
+
+.user-form-card h3{
+    text-align:center;
+    color:#5a3d2b;
+    font-size:32px;
+    font-weight:700;
+    margin-bottom:30px;
+}
+
+.user-form-card h3::after{
+    content:"";
+    display:block;
+    width:60px;
+    height:4px;
+    background:#d8a86d;
+    margin:12px auto 0;
+    border-radius:20px;
+}
+
+.user-form-card form p{
+    margin-bottom:18px;
+}
+
+.user-form-card label{
+    display:block;
+    color:#6f5645;
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+.user-form-card input,
+.user-form-card select,
+.user-form-card textarea{
+    width:100%;
+    padding:13px 16px;
+    border:1px solid #ead8bc;
+    border-radius:12px;
+    background:#fffdf9;
+    color:#5a3d2b;
+    font-size:15px;
+    transition:.3s;
+}
+
+.user-form-card input:focus,
+.user-form-card select:focus,
+.user-form-card textarea:focus{
+    outline:none;
+    border-color:#d8a86d;
+    box-shadow:0 0 12px rgba(216,168,109,.25);
+}
+
+.user-form-card textarea{
+    resize:vertical;
+}
+
+.user-form-card .btn-primary{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#deb887,#d4a373);
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.user-form-card .btn-primary:hover{
+    background:linear-gradient(135deg,#c7904d,#b7791f);
+    transform:translateY(-2px);
+    box-shadow:0 12px 25px rgba(183,121,31,.25);
+}
+
+.user-form-card .helptext{
+    display:block;
+    font-size:13px;
+    color:#8b7355;
+    margin-top:5px;
+}
+
+.user-form-card .errorlist{
+    list-style:none;
+    color:#dc2626;
+    font-size:14px;
+    padding:0;
+    margin-bottom:10px;
+}
+
+@media(max-width:768px){
+    .user-form-card .card-body{
+        padding:30px 20px;
+    }
+
+    .user-form-card h3{
+        font-size:28px;
+    }
+}
+</style>
+
+<div class="user-form-card">
+    <div class="card-body">
+        <h3>
+            {% if form.instance.pk %}
+                Edit User
+            {% else %}
+                Create User
+            {% endif %}
+        </h3>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-primary">
+                Save
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+

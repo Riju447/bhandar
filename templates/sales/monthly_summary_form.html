@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Monthly Sales & Revenue{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="mb-3">Record Monthly Sales & Revenue</h3>
+                <p class="text-muted">Use this page to add a monthly sales entry that will appear in the dashboard chart.</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Customer Name</label>
+                        <input type="text" name="customer_name" class="form-control" placeholder="Customer or Walk-in" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Sale Date</label>
+                        <input type="date" name="sale_date" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Total Amount</label>
+                        <input type="number" step="0.01" name="total_amount" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Discount</label>
+                        <input type="number" step="0.01" name="discount" class="form-control" value="0" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tax</label>
+                        <input type="number" step="0.01" name="tax" class="form-control" value="0" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Payment Method</label>
+                        <input type="text" name="payment_method" class="form-control" value="Cash" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Notes</label>
+                        <textarea name="notes" class="form-control" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Save Monthly Entry</button>
+                    <a href="{% url 'sales:sale_list' %}" class="btn btn-outline-light ms-2">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

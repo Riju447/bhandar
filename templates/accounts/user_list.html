@@ -1,0 +1,191 @@
+
+
+
+
+{% block content %}
+<style>
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.page-header h2{
+    color:#5a3d2b;
+    font-weight:700;
+    margin:0;
+}
+
+.add-user-btn{
+    padding:12px 22px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#deb887,#d4a373);
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.add-user-btn:hover{
+    background:linear-gradient(135deg,#c7904d,#b7791f);
+    color:#fff;
+    transform:translateY(-2px);
+}
+
+.users-card{
+    background:rgba(255,255,255,.95);
+    border:none;
+    border-radius:24px;
+    box-shadow:0 20px 40px rgba(146,111,74,.15);
+}
+
+.users-card .card-body{
+    padding:25px;
+}
+
+.table{
+    margin-bottom:0;
+    vertical-align:middle;
+}
+
+.table thead{
+    background:#f6ead7;
+}
+
+.table thead th{
+    color:#5a3d2b;
+    font-weight:700;
+    border-bottom:none;
+}
+
+.table tbody tr{
+    transition:.3s;
+}
+
+.table tbody tr:hover{
+    background:#fff8ee;
+}
+
+.table td{
+    color:#6f5645;
+}
+
+.action-btn{
+    padding:6px 12px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:500;
+    margin-right:5px;
+    transition:.3s;
+}
+
+.edit-btn{
+    background:#d4a373;
+    color:#fff;
+}
+
+.edit-btn:hover{
+    background:#b7791f;
+    color:#fff;
+}
+
+.delete-btn{
+    background:#dc3545;
+    color:#fff;
+}
+
+.delete-btn:hover{
+    background:#bb2d3b;
+    color:#fff;
+}
+
+.toggle-btn{
+    background:#0dcaf0;
+    color:#fff;
+}
+
+.toggle-btn:hover{
+    background:#0aa2c0;
+    color:#fff;
+}
+
+.empty-row{
+    text-align:center;
+    color:#888;
+    padding:20px;
+}
+</style>
+
+<div class="page-header">
+    <h2>Users</h2>
+
+    <a href="{% url 'accounts:user_create' %}" class="add-user-btn">
+        <i class="bi bi-person-plus-fill"></i> Add User
+    </a>
+</div>
+
+<div class="users-card">
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table class="table align-middle">
+
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th width="240">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+
+                        <td>{{ user.email }}</td>
+
+                        <td>
+                            {% if user.is_active %}
+                                <span class="badge bg-success">Active</span>
+                            {% else %}
+                                <span class="badge bg-danger">Inactive</span>
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            <a href="{% url 'accounts:user_edit' user.pk %}" class="action-btn edit-btn">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+
+                            <a href="{% url 'accounts:user_delete' user.pk %}" class="action-btn delete-btn">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+
+                            <a href="{% url 'accounts:toggle_user_status' user.pk %}" class="action-btn toggle-btn">
+                                <i class="bi bi-arrow-repeat"></i> Toggle
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="empty-row">
+                            No users found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: bhandar_django_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - django_db_data:/app/db_data
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always
+
+volumes:
+  django_db_data:

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Product Detail{% endblock %}
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h3>{{ object.name }}</h3>
+        <p><strong>SKU:</strong> {{ object.sku }}</p>
+        <p><strong>Barcode:</strong> {{ object.barcode }}</p>
+        <p><strong>Quantity:</strong> {{ object.quantity }}</p>
+        <p><strong>Selling Price:</strong> {{ object.selling_price }}</p>
+        <a href="{% url 'products:product_list' %}" class="btn btn-secondary">Back</a>
+    </div>
+</div>
+{% endblock %}
