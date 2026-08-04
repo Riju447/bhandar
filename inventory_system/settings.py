@@ -26,11 +26,7 @@ SECRET_KEY = 'django-insecure-0@(n%wvuf2-fkgj1ag2_2@1-tky+5ht51*blx#lft+5)78w!!=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    "bhandar-app-latest-1.onrender.com",
-    "localhost",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
