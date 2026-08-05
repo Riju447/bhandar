@@ -26,8 +26,16 @@ SECRET_KEY = 'django-insecure-0@(n%wvuf2-fkgj1ag2_2@1-tky+5ht51*blx#lft+5)78w!!=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = [
+    'bhandar-production.up.railway.app',
+    'localhost',
+    '127.0.0.1',
+    # ... any other domains
+]
+CSRF_TRUSTED_ORIGINS = [
+    'https://bhandar-production.up.railway.app',
+    'http://localhost:8000',
+]
 
 # Application definition
 
